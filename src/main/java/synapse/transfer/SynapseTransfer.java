@@ -52,7 +52,7 @@ class SynapseTransfer extends PluginBase{
 	 * @param string ld
 	 * @return null|string
 	 */
-	public Object getDescriptionByListData(String ld){
+	public String getDescriptionByListData(String ld){
 		if(list.containsKey(ld)){
 			return list.get(ld);
 		}
@@ -63,7 +63,7 @@ class SynapseTransfer extends PluginBase{
 	 * @param $des
 	 * @return array|null
 	 */
-	public Object getClientDataByDescription(String des){
+	public String getClientDataByDescription(String des){
 		foreach(getServer().getSynapse().getClientData() as $cdata){
 			if($cdata["description"] == des){
 				return $cdata;
@@ -76,7 +76,7 @@ class SynapseTransfer extends PluginBase{
 	 * @param string $des
 	 * @return null|string
 	 */
-	public function getClientHashByDescription(String des){
+	public String getClientHashByDescription(String des){
 		foreach(getServer().getSynapse().getClientData() as $hash => $cdata){
 			if($cdata["description"] == $des){
 				return $hash;
