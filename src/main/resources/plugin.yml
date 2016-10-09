@@ -1,7 +1,6 @@
 name: SynapseTransfer
 version: 1.0
-api: 1.0.0
-geniapi: 1.8.0
+api: ["1.0.0"]
 author: iTX Technologies
 main: synapse.transfer.SynapseTransfer
 description: A simple plugin which enables you to transfer between several Synapse Cients
