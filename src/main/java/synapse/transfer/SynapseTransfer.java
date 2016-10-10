@@ -49,7 +49,7 @@ public class SynapseTransfer extends PluginBase {
 			Map<String, Client> data = getServer().getClients();
 			Collection<Client> clients = data.values();
 			if (args.length == 0) {
-				sender.sendMessage(TextFormat.GOLD + "Tou can connect to the following servers:");
+				sender.sendMessage(TextFormat.GOLD + "You can connect to the following servers:");
 				String servers = "";
 				int size = clients.size();
 				for (Client c : clients) {
