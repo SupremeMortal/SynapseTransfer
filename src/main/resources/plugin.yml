@@ -1,17 +1,16 @@
 name: SynapseTransfer
 main: synapse.transfer.SynapseTransfer
 version: "1.0.0"
-api: ["1.0.0"]
-load: POSTWORLD
+api: ["1.0.6"]
 author: SupremeMortal
 description: Transfer between Synapse Clients
 website: https://github.com/SupremeMortal/SynapseTransfer
-permissions:
-synapse.command.server:
-  description: Allows to use server command.
-  default: true
 commands:
   server:
     description: Transfer between Synapse Clients
     usage: "/server <name> or /server to get list"
     permission: synapse.command.server
+permissions:
+  synapse.command.server:
+    description: Allows to use server command.
+    default: true

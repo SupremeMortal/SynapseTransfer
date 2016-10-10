@@ -5,13 +5,14 @@
   <version>0.0.1-ALPHA</version>
   <name>Synapse Transfer</name>
   <description>Integrate the synapse protocol into your server</description>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
   <repositories>
   	<repository>
   		<id>potestas-repo</id>
   		<url>https://mvn.potestas.xyz</url>
+  	</repository>
+  	<repository>
+  		<id>regular-repo</id>
+  		<url>http://ci.regularbox.com/plugin/repository/everything/</url>
   	</repository>
   	<repository>
   		<id>xworlds-repo</id>
@@ -26,17 +27,4 @@
   		<scope>provided</scope>
   	</dependency>
   </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

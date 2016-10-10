@@ -7,6 +7,10 @@ import org.itxtech.nemisys.Client;
 import org.itxtech.nemisys.Player;
 import org.itxtech.nemisys.command.Command;
 import org.itxtech.nemisys.command.CommandSender;
+import org.itxtech.nemisys.event.EventHandler;
+import org.itxtech.nemisys.event.EventPriority;
+import org.itxtech.nemisys.event.Listener;
+import org.itxtech.nemisys.event.server.ServerCommandEvent;
 import org.itxtech.nemisys.plugin.PluginBase;
 import org.itxtech.nemisys.utils.TextFormat;
 
@@ -21,7 +25,7 @@ import org.itxtech.nemisys.utils.TextFormat;
  *
  */
 
-public class SynapseTransfer extends PluginBase {
+public class SynapseTransfer extends PluginBase implements Listener{
 	@Override
 	public void onEnable() {
 		getLogger().info(TextFormat.WHITE + "Synapse Transfer enabled sucessfully!");
