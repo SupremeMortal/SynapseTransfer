@@ -1,5 +1,6 @@
 package synapse.transfer;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,17 +46,17 @@ public class SynapseTransfer extends PluginBase {
 		}
 		switch (command.getName().toLowerCase()) {
 		case "server":
-			Map<String, Client> clients = getServer().getClients();
-			Set<String> keys = clients.keySet();
+			Map<String, Client> data = getServer().getClients();
+			Collection<Client> clients = data.values();
 			if (args.length == 0) {
 				sender.sendMessage(TextFormat.GOLD + "Tou can connect to the following servers:");
 				String servers = "";
-				int size = keys.size();
-				for (String name : keys) {
+				int size = clients.size();
+				for (Client c : clients) {
 					if (size == 1) {
-						servers += name + ".";
+						servers += c.getDescription() + ".";
 					} else {
-						servers += name + ", ";
+						servers += c.getDescription() + ", ";
 					}
 				}
 				sender.sendMessage(TextFormat.GOLD + servers);
