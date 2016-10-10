@@ -25,10 +25,11 @@ import org.itxtech.nemisys.utils.TextFormat;
  *
  */
 
-public class SynapseTransfer extends PluginBase implements Listener{
+public class SynapseTransfer extends PluginBase {
 	@Override
 	public void onEnable() {
 		getLogger().info(TextFormat.WHITE + "Synapse Transfer enabled sucessfully!");
+
 	}
 
 	@Override
@@ -38,27 +39,29 @@ public class SynapseTransfer extends PluginBase implements Listener{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if (command.getName().equalsIgnoreCase("server")) {
-			if (!(sender instanceof Player)) {
-				return false;
-			} else {
-				Map<String, Client> clients = getServer().getClients();
-				Set<String> keys = clients.keySet();
-				if (args.length == 0 || args.length < 1) {
-					sender.sendMessage(TextFormat.GOLD + "Tou can connect to the following servers:");
-					String servers = "";
-					int size = keys.size();
-					for (String name : keys) {
-						if (size == 1) {
-							servers += name + ".";
-						} else {
-							servers += name + ", ";
-						}
-					}
-					sender.sendMessage(TextFormat.GOLD + servers);
-				}
-			}
+		boolean player=false;
+		if (sender instanceof Player) {
+			player=true;
 		}
-		return true;
+		switch (command.getName().toLowerCase()) {
+		case "server":
+			Map<String, Client> clients = getServer().getClients();
+			Set<String> keys = clients.keySet();
+			if (args.length == 0) {
+				sender.sendMessage(TextFormat.GOLD + "Tou can connect to the following servers:");
+				String servers = "";
+				int size = keys.size();
+				for (String name : keys) {
+					if (size == 1) {
+						servers += name + ".";
+					} else {
+						servers += name + ", ";
+					}
+				}
+				sender.sendMessage(TextFormat.GOLD + servers);
+			}
+			return true;
+		}
+		return false;
 	}
 }
