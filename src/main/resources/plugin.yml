@@ -2,6 +2,7 @@ name: SynapseTransfer
 main: synapse.transfer.SynapseTransfer
 version: "1.0.0"
 api: ["1.0.6"]
+load: STARTUP
 author: SupremeMortal
 description: Transfer between Synapse Clients
 website: https://github.com/SupremeMortal/SynapseTransfer
