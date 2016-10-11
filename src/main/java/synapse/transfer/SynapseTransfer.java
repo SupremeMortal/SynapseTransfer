@@ -43,7 +43,7 @@ public class SynapseTransfer extends PluginBase {
 		boolean player=false;
 		if (sender instanceof Player) {
 			player=true;
-		}
+		} else {
 		switch (command.getName().toLowerCase()) {
 		case "server":
 			Map<String, Client> data = getServer().getClients();
