@@ -24,8 +24,14 @@
   </repositories>
   <dependencies>
   	<dependency>
-  		<artifactId>nemisys</artifactId>
-  		<groupId>org.itxtech.nemisys</groupId>
+  		<artifactId>nukkit</artifactId>
+  		<groupId>cn.nukkit</groupId>
+  		<version>1.0-SNAPSHOT</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	<dependency>
+  		<artifactId>SynapseAPI</artifactId>
+  		<groupId>synapse.api</groupId>
   		<version>1.0-SNAPSHOT</version>
   		<scope>provided</scope>
   	</dependency>

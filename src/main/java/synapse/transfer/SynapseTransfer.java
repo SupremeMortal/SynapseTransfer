@@ -1,19 +1,13 @@
 package synapse.transfer;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-
-import org.itxtech.nemisys.Client;
-import org.itxtech.nemisys.Player;
-import org.itxtech.nemisys.command.Command;
-import org.itxtech.nemisys.command.CommandSender;
-import org.itxtech.nemisys.event.EventHandler;
-import org.itxtech.nemisys.event.EventPriority;
-import org.itxtech.nemisys.event.Listener;
-import org.itxtech.nemisys.event.server.ServerCommandEvent;
-import org.itxtech.nemisys.plugin.PluginBase;
-import org.itxtech.nemisys.utils.TextFormat;
+import org.itxtech.synapseapi.SynapseAPI;
+import org.itxtech.synapseapi.SynapseEntry;
+import org.itxtech.synapseapi.SynapsePlayer;
+import cn.nukkit.Player;
+import cn.nukkit.command.Command;
+import cn.nukkit.command.CommandSender;
+import cn.nukkit.plugin.PluginBase;
+import cn.nukkit.utils.TextFormat;
 
 /*
  * This program is free software: you can redistribute it and/or modify
@@ -27,9 +21,11 @@ import org.itxtech.nemisys.utils.TextFormat;
  */
 
 public class SynapseTransfer extends PluginBase {
+	private static SynapseAPI api;
 	@Override
 	public void onEnable() {
 		getLogger().info(TextFormat.WHITE + "Synapse Transfer enabled sucessfully!");
+		api=SynapseAPI.getInstance();
 
 	}
 
@@ -41,23 +37,27 @@ public class SynapseTransfer extends PluginBase {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		boolean player=false;
+		Player p;
+		SynapsePlayer sp;
 		if (sender instanceof Player) {
 			player=true;
+			p = (Player)sender;
+			sp = (SynapsePlayer)p;
+			
 		}
 		switch (command.getName().toLowerCase()) {
 		case "server":
-			Map<String, Client> data = getServer().getClients();
-			Collection<Client> clients = data.values();
 			if (args.length == 0) {
 				sender.sendMessage(TextFormat.GOLD + "You can connect to the following servers:");
 				String servers = "";
-				int size = clients.size();
-				for (Client c : clients) {
+				int size = api.getSynapseEntries().keySet().size();
+				for (SynapseEntry se : api.getSynapseEntries().values()) {
 					if (size == 1) {
-						servers += c.getDescription() + ".";
+						servers += se.getServerDescription() + ".";
 					} else {
-						servers += c.getDescription() + ", ";
+						servers += se.getServerDescription() + ", ";
 					}
+					size-=1;
 				}
 				sender.sendMessage(TextFormat.GOLD + servers);
 			}
@@ -65,4 +65,4 @@ public class SynapseTransfer extends PluginBase {
 		}
 		return false;
 	}
-}
+}//((SynapsePlayer) event.getPlayer()).transfer(((SynapsePlayer) event.getPlayer()).getSynapseEntry().getClientData().getHashByDescription("lobby"));
