@@ -37,12 +37,16 @@ public class SynapseTransfer extends PluginBase {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		boolean player=false;
+		boolean sPlayer=false;
 		Player p;
 		SynapsePlayer sp;
 		if (sender instanceof Player) {
 			player=true;
 			p = (Player)sender;
-			sp = (SynapsePlayer)p;
+			if (p instanceof SynapsePlayer){
+				sp = (SynapsePlayer)p;
+				sPlayer=true;
+			}
 			
 		}
 		switch (command.getName().toLowerCase()) {
