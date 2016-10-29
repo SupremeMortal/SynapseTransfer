@@ -22,10 +22,11 @@ import cn.nukkit.utils.TextFormat;
 
 public class SynapseTransfer extends PluginBase {
 	private static SynapseAPI api;
+
 	@Override
 	public void onEnable() {
 		getLogger().info(TextFormat.WHITE + "Synapse Transfer enabled sucessfully!");
-		api=SynapseAPI.getInstance();
+		api = SynapseAPI.getInstance();
 
 	}
 
@@ -36,37 +37,56 @@ public class SynapseTransfer extends PluginBase {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		boolean player=false;
-		boolean sPlayer=false;
-		Player p;
-		SynapsePlayer sp;
+		boolean player = false;
+		boolean sPlayer = false;
+		Player p=null;
+		SynapsePlayer sp=null;
 		if (sender instanceof Player) {
-			player=true;
-			p = (Player)sender;
-			if (p instanceof SynapsePlayer){
-				sp = (SynapsePlayer)p;
-				sPlayer=true;
+			player = true;
+			p = (Player) sender;
+			if (p instanceof SynapsePlayer) {
+				sp = (SynapsePlayer) p;
+				sPlayer = true;
 			}
-			
+
 		}
 		switch (command.getName().toLowerCase()) {
 		case "server":
-			if (args.length == 0) {
-				sender.sendMessage(TextFormat.GOLD + "You can connect to the following servers:");
-				String servers = "";
-				int size = api.getSynapseEntries().keySet().size();
-				for (SynapseEntry se : api.getSynapseEntries().values()) {
-					if (size == 1) {
-						servers += se.getServerDescription() + ".";
-					} else {
-						servers += se.getServerDescription() + ", ";
+			if (sPlayer = true) {
+				if (args.length == 0) {
+					sender.sendMessage(TextFormat.GOLD + "You can connect to the following servers:");
+					String servers = "";
+					int size = api.getSynapseEntries().keySet().size();
+					for (SynapseEntry se : api.getSynapseEntries().values()) {
+						if (size == 1) {
+							servers += se.getServerDescription() + ".";
+						} else {
+							servers += se.getServerDescription() + ", ";
+						}
+						size -= 1;
 					}
-					size-=1;
+					sender.sendMessage(TextFormat.GOLD + servers);
+					return true;
+				}else{
+					sender.sendMessage(TextFormat.RED+"You are not a synapse player!");
+					return true;
 				}
-				sender.sendMessage(TextFormat.GOLD + servers);
+			} else if (args.length == 1) {
+				if (sPlayer = true) {
+					try{
+						sp.transfer(sp.getSynapseEntry().getClientData().getHashByDescription(args[0]));
+					}catch(Exception e){
+						sender.sendMessage("That server does not exist!");
+						return true;
+					}
+				} else {
+					sender.sendMessage(TextFormat.RED + "You are not a synapse player!");
+					return true;
+				}
 			}
 			return true;
 		}
 		return false;
 	}
-}//((SynapsePlayer) event.getPlayer()).transfer(((SynapsePlayer) event.getPlayer()).getSynapseEntry().getClientData().getHashByDescription("lobby"));
+}// ((SynapsePlayer) event.getPlayer()).transfer(((SynapsePlayer)
+	// event.getPlayer()).getSynapseEntry().getClientData().getHashByDescription("lobby"));
