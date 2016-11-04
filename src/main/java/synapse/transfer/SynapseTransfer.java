@@ -39,8 +39,8 @@ public class SynapseTransfer extends PluginBase {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		boolean player = false;
 		boolean sPlayer = false;
-		Player p=null;
-		SynapsePlayer sp=null;
+		Player p = null;
+		SynapsePlayer sp = null;
 		if (sender instanceof Player) {
 			player = true;
 			p = (Player) sender;
@@ -57,6 +57,7 @@ public class SynapseTransfer extends PluginBase {
 					sender.sendMessage(TextFormat.GOLD + "You can connect to the following servers:");
 					String servers = "";
 					int size = api.getSynapseEntries().keySet().size();
+
 					for (SynapseEntry se : api.getSynapseEntries().values()) {
 						if (size == 1) {
 							servers += se.getServerDescription() + ".";
@@ -67,24 +68,18 @@ public class SynapseTransfer extends PluginBase {
 					}
 					sender.sendMessage(TextFormat.GOLD + servers);
 					return true;
-				}else{
-					sender.sendMessage(TextFormat.RED+"You are not a synapse player!");
-					return true;
-				}
-			} else if (args.length == 1) {
-				if (sPlayer = true) {
-					try{
+				} else if (args.length == 1) {
+					try {
 						sp.transfer(sp.getSynapseEntry().getClientData().getHashByDescription(args[0]));
-					}catch(Exception e){
+					} catch (Exception e) {
 						sender.sendMessage("That server does not exist!");
 						return true;
 					}
-				} else {
-					sender.sendMessage(TextFormat.RED + "You are not a synapse player!");
-					return true;
 				}
+			} else {
+				sender.sendMessage(TextFormat.RED + "You are not a synapse player!");
+				return true;
 			}
-			return true;
 		}
 		return false;
 	}
