@@ -3,6 +3,8 @@ package synapse.transfer;
 import org.itxtech.synapseapi.SynapseAPI;
 import org.itxtech.synapseapi.SynapseEntry;
 import org.itxtech.synapseapi.SynapsePlayer;
+import org.itxtech.synapseapi.utils.ClientData.Entry;
+
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
@@ -58,11 +60,11 @@ public class SynapseTransfer extends PluginBase {
 					String servers = "";
 					int size = api.getSynapseEntries().keySet().size();
 
-					for (SynapseEntry se : api.getSynapseEntries().values()) {
+					for (Entry se : sp.getSynapseEntry().getClientData().clientList.values()) {
 						if (size == 1) {
-							servers += se.getServerDescription() + ".";
+							servers += se.getDescription() + ".";
 						} else {
-							servers += se.getServerDescription() + ", ";
+							servers += se.getDescription() + ", ";
 						}
 						size -= 1;
 					}
