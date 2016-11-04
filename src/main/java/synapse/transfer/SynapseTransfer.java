@@ -58,7 +58,7 @@ public class SynapseTransfer extends PluginBase {
 				if (args.length == 0) {
 					sender.sendMessage(TextFormat.GOLD + "You can connect to the following servers:");
 					String servers = "";
-					int size = api.getSynapseEntries().keySet().size();
+					int size = sp.getSynapseEntry().getClientData().clientList.keySet().size();
 
 					for (Entry se : sp.getSynapseEntry().getClientData().clientList.values()) {
 						if (size == 1) {
@@ -85,5 +85,4 @@ public class SynapseTransfer extends PluginBase {
 		}
 		return false;
 	}
-}// ((SynapsePlayer) event.getPlayer()).transfer(((SynapsePlayer)
-	// event.getPlayer()).getSynapseEntry().getClientData().getHashByDescription("lobby"));
+}
