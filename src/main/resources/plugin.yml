@@ -1,6 +1,6 @@
 name: SynapseTransfer
 main: synapse.transfer.SynapseTransfer
-version: "1.0.0"
+version: "1.1.0"
 api: ["1.0.6"]
 load: STARTUP
 author: SupremeMortal
@@ -11,9 +11,16 @@ commands:
     description: Transfer between Synapse Clients
     usage: "/server <name> or /server to get list"
     permission: synapse.command.server
+  send:
+    description: Force transfer other players between Synapse Clients
+    usage: "/send <player> list servers player can join, /send <player> <name> or /send * <name> forces all players on current server to another"
+    permissions: synapse.command.send
 permissions:
   synapse.command.server:
-    description: Allows to use server command.
+    description: Grants access to server command.
     default: true
+  synapse.command.send
+    description: Grants access to send command.
+    default: false
 depend:
  - SynapseAPI
