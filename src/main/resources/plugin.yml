@@ -15,3 +15,5 @@ permissions:
   synapse.command.server:
     description: Allows to use server command.
     default: true
+depend:
+ - SynapseAPI
