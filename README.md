@@ -8,7 +8,7 @@ Download here: https://ci.potestas.xyz/job/SynapseTransfer/
 Depends on SynapseAPI
 
 
-Commands
+##Commands
 
 /server
 
