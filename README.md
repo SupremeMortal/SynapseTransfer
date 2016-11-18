@@ -10,11 +10,9 @@ Depends on SynapseAPI
 
 ##Commands
 
-/server
-
+###/server
 lists all servers you are able to connect to
 
-/server \<server>
-
+###/server \<server>
 Connect to a specific server
 
