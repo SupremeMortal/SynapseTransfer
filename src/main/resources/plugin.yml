@@ -19,7 +19,7 @@ permissions:
   synapse.command.server:
     description: Grants access to server command.
     default: true
-  synapse.command.send
+  synapse.command.send:
     description: Grants access to send command.
     default: false
 depend:
